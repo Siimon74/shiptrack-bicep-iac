@@ -1,0 +1,35 @@
+name: Validate Bicep
+
+# Runs on every pull request and on every push to main
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      # Dummy value so the parameter files can be built. Not a real secret.
+      SHIPTRACK_SECRET: dummy-value-for-ci
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Bicep
+        run: az bicep install
+
+      - name: Lint Bicep
+        run: az bicep lint --file infra/main.bicep
+
+      - name: Build Bicep (checks syntax and types)
+        run: az bicep build --file infra/main.bicep --stdout > /dev/null
+
+      - name: Build dev parameters
+        run: az bicep build-params --file infra/params/dev.bicepparam --stdout > /dev/null
+
+      - name: Build test parameters
+        run: az bicep build-params --file infra/params/test.bicepparam --stdout > /dev/null
