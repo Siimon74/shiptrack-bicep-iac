@@ -1,0 +1,11 @@
+# Secrets: never publish passwords or keys
+.env
+*.local.bicepparam
+
+# Files generated automatically by az bicep build
+main.json
+
+# Operating system clutter
+Thumbs.db
+desktop.ini
+.DS_Store
