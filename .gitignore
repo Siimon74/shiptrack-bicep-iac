@@ -9,3 +9,6 @@ main.json
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Deployment package for the app
+app.zip
