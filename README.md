@@ -51,9 +51,9 @@ flowchart LR
 
 ### How the app gets its secret
 
-1. The web app has a **managed identity**: Azure gives it its own identity, so it does not need a password.
-2. This identity has the role **Key Vault Secrets User** on the Key Vault. It can read secrets, and nothing else.
-3. The app setting does not contain the secret. It contains a **link** to the secret in Key Vault.
+1. The web app has a managed identity: Azure gives it its own identity, so it does not need a password.
+2. This identity has the role Key Vault Secrets User on the Key Vault. It can read secrets, and nothing else.
+3. The app setting does not contain the secret. It contains a link to the secret in Key Vault.
 4. When the app starts, Azure uses the identity to read the secret through this link.
 
 ## Why Bicep
