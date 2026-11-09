@@ -174,6 +174,7 @@ az keyvault purge --name <keyVaultName>
 - Only dev and test are in scope. Production would be one more parameter file.
 - The secret is a demo value. There is no real database.
 - The pipeline checks the code but does not deploy. The brief says deploying from the pipeline is optional.
+- All commands were tested in PowerShell on Windows only.
 
 ## Other documents
 
